@@ -2,6 +2,6 @@ version: "3.9"
 services:
   app:
     build: .
-    command: "irb"
+    command: /bin/bash -c "while sleep 1000; do :; done"
     volumes:
-      - .:/workspaces/vending_machine
+      - .:/app
