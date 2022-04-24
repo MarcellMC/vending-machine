@@ -1,16 +1,17 @@
 require 'state_machines'
 
 class VendingMachine
-  state_machine initial: :idle do
+  state_machine initial: :initial do
     event :choose_product do
-      transition idle: :awaiting_coins
+      transition initial: :product_selected
     end
 
     event :insert_coins do
-      transition idle: :awaiting_product
+      transition initial: :awaiting_product
     end
 
-    state :idle
+    state :initial, :product_selected, 
+      :insert_coins, :return_change, :return_product 
   end
 
   def initialize
